@@ -46,7 +46,14 @@ export const ExerciseForm = ({
         {t("Add set")} +
       </Button>
 
-      <Button onClick={() => setData(state)} disabled={state.sets.length > 10}>
+      <Button
+        onClick={() => setData(state)}
+        disabled={
+          state.sets.length > 10 ||
+          !state.validator.isValid() ||
+          !state.sets.every((s) => s.validator.isValidForm())
+        }
+      >
         {t("Save")}
       </Button>
     </section>
