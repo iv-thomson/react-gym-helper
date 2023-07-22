@@ -50,7 +50,7 @@ export const ExerciseForm = ({
         onClick={() => setData(state)}
         disabled={
           state.sets.length > 10 ||
-          !state.validator.isValid() ||
+          !state.validator.isValidRaw() ||
           !state.sets.every((s) => s.validator.isValidForm())
         }
       >

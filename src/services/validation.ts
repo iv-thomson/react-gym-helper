@@ -17,6 +17,10 @@ export class ValidationRule<T> {
     return this.validator(this.value);
   }
 
+  public isValidRaw() {
+    return this.validator(this.value);
+  }
+
   public static langerThanZero = (value: number, isTouched: boolean = false) =>
     new ValidationRule(
       value,
