@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import "./Side.css";
 import { Card } from "../Card/Card";
 import { pipeClasses, withCondition } from "../utils";
@@ -10,6 +10,16 @@ export const Side = ({
   isOpen,
   onClose,
 }: PropsWithChildren<{ isOpen: boolean; onClose: () => void }>) => {
+  const onKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      onClose();
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
     <Card
       className={pipeClasses(

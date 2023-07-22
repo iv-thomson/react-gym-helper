@@ -17,7 +17,7 @@ export const ExerciseView = ({
 
       <ul className="ul-no-style">
         {state.sets.map((set) => (
-          <li>
+          <li key={set.id}>
             {set.reps} x {set.weight}kg
           </li>
         ))}

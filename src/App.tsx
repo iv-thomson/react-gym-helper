@@ -64,7 +64,11 @@ function App() {
       <section className="column gap right">
         <CardList>
           {exerciseList.map((e) => (
-            <Card hasHover onClick={() => setCurrentEditableExercise(e)}>
+            <Card
+              hasHover
+              onClick={() => setCurrentEditableExercise(e)}
+              key={e.id}
+            >
               <ExercisePreview state={e} />
             </Card>
           ))}

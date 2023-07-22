@@ -6,7 +6,7 @@ export const ExercisePreview = ({ state }: { state: ExerciseState }) => {
       <h4>{state.name}</h4>
       <ul className="ul-no-style">
         {state.sets.slice(0, 3).map((set) => (
-          <li>
+          <li key={set.id}>
             {set.reps} x {set.weight}kg
           </li>
         ))}
