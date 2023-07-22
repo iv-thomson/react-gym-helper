@@ -23,3 +23,13 @@
   top: 16px;
   right: 16px;
 }
+
+@media (max-width: 700px) {
+  .side {
+    box-sizing: border-box;
+    width: 100vw;
+  }
+  .side.side--closed {
+    left: -110vw;
+  }
+}

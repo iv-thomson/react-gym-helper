@@ -1,6 +1,6 @@
 import "./App.css";
 
-import i18next from "i18next";
+import i18next, { t } from "i18next";
 import { useState } from "react";
 
 import { initReactI18next } from "react-i18next";
@@ -44,7 +44,8 @@ function App() {
   };
 
   return (
-    <main className="row gap">
+    <main className="column gap">
+      <h1>{t("Workout")}</h1>
       <Side isOpen={Boolean(currentEditableExercise)} onClose={closeExercise}>
         {isEditable ? (
           <ExerciseForm
@@ -59,18 +60,22 @@ function App() {
         )}
       </Side>
 
-      <section className="column gap right">
-        <CardList>
-          {exerciseList.map((e) => (
-            <Card
-              hasHover
-              onClick={() => setCurrentEditableExercise(e)}
-              key={e.id}
-            >
-              <ExercisePreview state={e} />
-            </Card>
-          ))}
-        </CardList>
+      <section className="column gap right exercise-list">
+        {exerciseList.length > 0 ? (
+          <CardList>
+            {exerciseList.map((e) => (
+              <Card
+                hasHover
+                onClick={() => setCurrentEditableExercise(e)}
+                key={e.id}
+              >
+                <ExercisePreview state={e} />
+              </Card>
+            ))}
+          </CardList>
+        ) : (
+          <h3>{t("Start your workout by adding exercises!")}</h3>
+        )}
         <Button onClick={openExercise}>New exercise +</Button>
       </section>
     </main>
