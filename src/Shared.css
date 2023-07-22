@@ -1,0 +1,51 @@
+@import "./Variables.css";
+
+/* ALIGNMENT */
+
+.row {
+  display: flex;
+}
+.row.center {
+  justify-content: center;
+}
+
+.row.right {
+  justify-content: flex-end;
+}
+
+.column {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.column.center {
+  align-items: center;
+}
+
+.column.right {
+  align-items: flex-end;
+}
+
+.column.gap,
+.row.gap {
+  gap: 16px;
+}
+
+.column.gap-s,
+.row.gap-s {
+  gap: 8px;
+}
+
+/* COLORS */
+
+.text-color-error {
+  color: var(--color-error);
+}
+
+/* UTILS */
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

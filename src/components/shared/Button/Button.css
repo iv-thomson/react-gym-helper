@@ -1,0 +1,20 @@
+.Button {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: none;
+}
+
+.Button.Button--cropped-right {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.Button.Button--cropped-left {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.Button.Button--square {
+  border-radius: 0;
+}
