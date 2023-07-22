@@ -5,9 +5,11 @@ import { CropStyle } from "../models";
 interface Props {
   value: number;
   onInput: (value: number) => void;
+  step?: number;
 }
 
-export const NumberInput = ({ value, onInput }: Props) => {
+export const NumberInput = ({ value, onInput, step }: Props) => {
+  const inputStep = step || 1;
   const onChange = (newValue: string) => {
     if (Number.isNaN(Number(newValue))) {
       return;
@@ -24,11 +26,14 @@ export const NumberInput = ({ value, onInput }: Props) => {
         inputStyle={CropStyle.CroppedRight}
       />
       <div className="row">
-        <Button onClick={() => onInput(value - 1)} cropStyle={CropStyle.Square}>
+        <Button
+          onClick={() => onInput(value - inputStep)}
+          cropStyle={CropStyle.Square}
+        >
           -
         </Button>
         <Button
-          onClick={() => onInput(value + 1)}
+          onClick={() => onInput(value + inputStep)}
           cropStyle={CropStyle.CroppedLeft}
         >
           +

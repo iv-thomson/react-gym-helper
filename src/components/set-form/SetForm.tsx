@@ -36,6 +36,7 @@ export const SetInput = ({ state, setState, onDelete }: Props) => {
         <label>{t("Weight")}</label>
         <NumberInput
           value={state.weight}
+          step={2.5}
           onInput={(value) => setState(state.updateWeight(value))}
         />
       </WithValidation>
