@@ -43,11 +43,11 @@ export const ExerciseForm = ({
         onClick={() => setState(state.addSet())}
         disabled={state.sets.length > 10}
       >
-        Add set +
+        {t("Add set")} +
       </Button>
 
       <Button onClick={() => setData(state)} disabled={state.sets.length > 10}>
-        Save
+        {t("Save")}
       </Button>
     </section>
   );
