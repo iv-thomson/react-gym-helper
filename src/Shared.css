@@ -16,6 +16,7 @@
 .column {
   display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
@@ -37,6 +38,18 @@
   gap: 8px;
 }
 
+.p {
+  padding: 16px;
+}
+
+.p-s {
+  padding: 8px;
+}
+
+.p-l {
+  padding: 24px;
+}
+
 /* COLORS */
 
 .text-color-error {
@@ -48,4 +61,16 @@
 .disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+ul.ul-no-style {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* typography */
+.content > h4 {
+  margin-bottom: 8px;
+  margin-top: 8px;
 }

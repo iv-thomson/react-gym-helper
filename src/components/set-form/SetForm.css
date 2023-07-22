@@ -1,0 +1,7 @@
+.set-form .Input {
+  width: 50px;
+}
+
+.set-form .Button {
+  align-self: flex-end;
+}

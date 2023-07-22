@@ -6,6 +6,9 @@ import { WithValidation } from "../shared/WithValidation/WithValidation";
 
 import { Button } from "../shared/Button/Button";
 
+import "./SetForm.css";
+import { ButtonStyle } from "../shared/models";
+
 interface Props {
   state: SetForm;
   setState: (value: SetForm) => void;
@@ -14,7 +17,7 @@ interface Props {
 
 export const SetInput = ({ state, setState, onDelete }: Props) => {
   return (
-    <form className="row gap">
+    <form className="row gap set-form">
       <WithValidation
         className="column gap-s"
         rule={state.validator.repsValidator}
@@ -36,7 +39,12 @@ export const SetInput = ({ state, setState, onDelete }: Props) => {
           onInput={(value) => setState(state.updateWeight(value))}
         />
       </WithValidation>
-      <Button onClick={() => onDelete(state)}>{t("Delete")}</Button>
+      <Button
+        buttonStyle={ButtonStyle.TextOnly}
+        onClick={() => onDelete(state)}
+      >
+        {t("x")}
+      </Button>
     </form>
   );
 };

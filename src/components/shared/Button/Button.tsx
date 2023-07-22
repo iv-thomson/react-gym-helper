@@ -1,17 +1,21 @@
 import { MouseEvent, PropsWithChildren } from "react";
 import "./Button.css";
-import { CropStyle } from "../models";
-import { withDisabled, withModifier } from "../utils";
+import { ButtonStyle, CropStyle } from "../models";
+import { optional, pipeClasses, withCondition } from "../utils";
 
 export const Button = ({
   children,
   onClick,
+  className,
   cropStyle,
   disabled,
+  buttonStyle,
 }: PropsWithChildren<{
   onClick: () => void;
   cropStyle?: CropStyle;
   disabled?: boolean;
+  className?: string;
+  buttonStyle?: ButtonStyle;
 }>) => {
   const clickHanlder = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -21,9 +25,12 @@ export const Button = ({
   return (
     <button
       tabIndex={disabled ? -1 : 0}
-      className={withDisabled(
-        withModifier("Button", cropStyle),
-        disabled ?? false
+      className={pipeClasses(
+        "Button",
+        optional(`Button--${buttonStyle}`),
+        withCondition("disabled")(disabled),
+        withCondition(`Button--${cropStyle}`)(Boolean(cropStyle)),
+        optional(className)
       )}
       onClick={clickHanlder}
     >

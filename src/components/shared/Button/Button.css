@@ -18,3 +18,13 @@
 .Button.Button--square {
   border-radius: 0;
 }
+
+.Button.Button--text-only {
+  transition: background-color 200ms;
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.Button.Button--text-only:hover {
+  background-color: #505050;
+}

@@ -1,27 +1,17 @@
-import { t } from "i18next";
 import { ExerciseState } from "../../models";
 
-import { Button } from "../shared/Button/Button";
-
-export const ExercisePreview = ({
-  state,
-  setEditable,
-}: {
-  state: ExerciseState;
-  setEditable: () => void;
-}) => {
+export const ExercisePreview = ({ state }: { state: ExerciseState }) => {
   return (
-    <section className="column gap">
-      <h3>{t("Set")}</h3>
-      <h6>{state.name}</h6>
-
-      {state.sets.map((set) => (
-        <p>
-          {set.reps} x ${set.weight}
-        </p>
-      ))}
-
-      <Button onClick={() => setEditable()}>Edit</Button>
-    </section>
+    <div className="column gap content">
+      <h4>{state.name}</h4>
+      <ul className="ul-no-style">
+        {state.sets.slice(0, 3).map((set) => (
+          <li>
+            {set.reps} x {set.weight}kg
+          </li>
+        ))}
+      </ul>
+      {state.sets.length > 3 && <span>...</span>}
+    </div>
   );
 };

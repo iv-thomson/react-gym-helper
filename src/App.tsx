@@ -1,12 +1,16 @@
 import "./App.css";
 
-import i18next, { t } from "i18next";
+import i18next from "i18next";
 import { useState } from "react";
 
 import { initReactI18next } from "react-i18next";
 import { ExerciseForm } from "./components/exercise-from/ExerciseForm";
 import { ExerciseState } from "./models";
 import { Button } from "./components/shared/Button/Button";
+import { ExerciseView } from "./components/exercise-view/ExerciseView";
+import { Card } from "./components/shared/Card/Card";
+import { CardList } from "./components/shared/CardList/CardList";
+import { Side } from "./components/shared/Side/Side";
 import { ExercisePreview } from "./components/exercise-preview/ExercisePreview";
 
 i18next.use(initReactI18next).init({});
@@ -34,27 +38,37 @@ function App() {
     setCurrentEditableExercise(ExerciseState.empty());
   };
 
+  const closeExercise = () => {
+    setEditable(false);
+    setCurrentEditableExercise(null);
+  };
+
   return (
     <main className="row gap">
       {currentEditableExercise && (
-        <aside>
+        <Side isOpen={Boolean(currentEditableExercise)} onClose={closeExercise}>
           {isEditable ? (
             <ExerciseForm
               data={currentEditableExercise}
               setData={updateExercises}
             ></ExerciseForm>
           ) : (
-            <ExercisePreview
+            <ExerciseView
               state={currentEditableExercise}
               setEditable={() => setEditable(true)}
             />
           )}
-        </aside>
+        </Side>
       )}
-      <section className="column gap">
-        {exerciseList.map((e) => (
-          <div onClick={() => setCurrentEditableExercise(e)}>{e.name}</div>
-        ))}
+
+      <section className="column gap right">
+        <CardList>
+          {exerciseList.map((e) => (
+            <Card hasHover onClick={() => setCurrentEditableExercise(e)}>
+              <ExercisePreview state={e} />
+            </Card>
+          ))}
+        </CardList>
         <Button onClick={openExercise}>New exercise +</Button>
       </section>
     </main>
