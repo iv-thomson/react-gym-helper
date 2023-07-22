@@ -1,22 +1,21 @@
 .side {
   height: 100%;
-  width: 0;
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
   background-color: #111;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: width 0.5s;
-}
-
-.side.side--opened {
+  transition: left 0.5s;
   width: 300px;
 }
 
+.side.side--opened {
+  left: 0;
+}
+
 .side.side--closed {
-  width: 0;
+  left: -400px;
 }
 
 .side .close-button {

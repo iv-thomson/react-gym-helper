@@ -45,21 +45,19 @@ function App() {
 
   return (
     <main className="row gap">
-      {currentEditableExercise && (
-        <Side isOpen={Boolean(currentEditableExercise)} onClose={closeExercise}>
-          {isEditable ? (
-            <ExerciseForm
-              data={currentEditableExercise}
-              setData={updateExercises}
-            ></ExerciseForm>
-          ) : (
-            <ExerciseView
-              state={currentEditableExercise}
-              setEditable={() => setEditable(true)}
-            />
-          )}
-        </Side>
-      )}
+      <Side isOpen={Boolean(currentEditableExercise)} onClose={closeExercise}>
+        {isEditable ? (
+          <ExerciseForm
+            data={currentEditableExercise || ExerciseState.empty()}
+            setData={updateExercises}
+          ></ExerciseForm>
+        ) : (
+          <ExerciseView
+            state={currentEditableExercise || ExerciseState.empty()}
+            setEditable={() => setEditable(true)}
+          />
+        )}
+      </Side>
 
       <section className="column gap right">
         <CardList>
