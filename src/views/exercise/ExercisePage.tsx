@@ -1,25 +1,21 @@
-import "./App.css";
+import "./ExercisePage.css";
 
-import i18next, { t } from "i18next";
+import { t } from "i18next";
 import { useState } from "react";
 
-import { initReactI18next } from "react-i18next";
-import { ExerciseForm } from "./components/exercise-from/ExerciseForm";
-import { ExerciseState } from "./models";
-import { Button } from "./components/shared/Button/Button";
-import { ExerciseView } from "./components/exercise-view/ExerciseView";
-import { Card } from "./components/shared/Card/Card";
-import { CardList } from "./components/shared/CardList/CardList";
-import { Side } from "./components/shared/Side/Side";
-import { ExercisePreview } from "./components/exercise-preview/ExercisePreview";
+import { ExerciseForm } from "@/components/exercise-from/ExerciseForm";
+import { ExerciseState } from "@/models";
+import { Button } from "@/components/shared/Button/Button";
+import { ExerciseView } from "@/components/exercise-view/ExerciseView";
+import { Card } from "@/components/shared/Card/Card";
+import { CardList } from "@/components/shared/CardList/CardList";
+import { Side } from "@/components/shared/Side/Side";
+import { ExercisePreview } from "@/components/exercise-preview/ExercisePreview";
 
-i18next.use(initReactI18next).init({});
-
-function App() {
+export const ExercisePage = () => {
   const [exerciseList, updateExercices] = useState<ExerciseState[]>([]);
   const [currentEditableExercise, setCurrentEditableExercise] =
     useState<ExerciseState | null>(null);
-
   const [isEditable, setEditable] = useState(false);
 
   const updateExercises = (exercise: ExerciseState) => {
@@ -80,6 +76,4 @@ function App() {
       </section>
     </main>
   );
-}
-
-export default App;
+};
